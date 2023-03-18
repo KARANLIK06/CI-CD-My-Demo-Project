@@ -1,8 +1,8 @@
 node {
     stage('Clone code') {
-        git 'https://github.com/vasyafomiuk/demo-project.git'
+        git 'https://github.com/Cydeo-EU10/CI-CD-Demo-Project'
     }
-        
+
     stage('Run tests'){
         if(isUnix()){
             sh "mvn clean test"
@@ -10,7 +10,7 @@ node {
             bat "mvn clean test"
         }
     }
-        
+
     stage('Generate report'){
            cucumber failedFeaturesNumber: -1, failedScenariosNumber: -1, failedStepsNumber: -1, fileIncludePattern: '**/*.json', pendingStepsNumber: -1, skippedStepsNumber: -1, sortingMethod: 'ALPHABETICAL', undefinedStepsNumber: -1
     }
